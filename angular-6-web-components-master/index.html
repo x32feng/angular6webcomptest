@@ -5,17 +5,16 @@
   <meta charset="UTF-8">
   <title>Custom Button Test Page</title>
   <script src="elements.js"></script>
+  
 </head>
 
 <body>
-  <custom-button label="First Value"></custom-button>
+  <custom-button label="TEST elements"></custom-button>
 
   <script>
     const button = document.querySelector('custom-button');
-    // button.addEventListener('action', (event) => {
-    //   console.log(`"action" emitted: ${event.detail}`);
-    // })
-    // setTimeout(() => button.label = 'Second Value', 3000);
+    button.addEventListener("onSubmit", function(e) { console.log("event captured" +e.detail) });
+
 
   </script>
 </body>

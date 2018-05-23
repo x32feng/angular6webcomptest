@@ -16,8 +16,8 @@ import {
   <button (click)="handleClick()">third</button>
 <br/>
 <br/>
-First name: <input type="text" name="FirstName" value="Mickey"><br>
-Last name: <input type="text" name="LastName" value="Mouse"><br>
+First name: <input type="text" name="FirstName" value={{firstname}}><br>
+Last name: <input type="text" name="LastName" value={{lastname}}><br>
 <br/>
 <br/>
 <button id="sbtn" (click)="handleSubmit()">SUBMIT</button>
@@ -41,11 +41,22 @@ Last name: <input type="text" name="LastName" value="Mouse"><br>
 export class ButtonComponent {
   @Input() label = 'default label';
 
+  @Input()
+  set json(json: any) {
+   // this.obj = JSON.parse(json);
+    this.firstname = json.firstname;
+    this.lastname = json.lastname;
+
+  }
+
   @Output() action = new EventEmitter<number>();
 
-  @Output() onSubmit = new EventEmitter<boolean>();
+  @Output() onSubmit = new EventEmitter<string>();
 
   private clicksCt = 0;
+  private obj;
+  public firstname ='Mickey';
+  public lastname = 'Mouse';
 
   handleClick() {
     window.alert("hi!");
@@ -54,7 +65,7 @@ export class ButtonComponent {
   }
   handleSubmit() {
     console.log("submit clicked");
-    this.onSubmit.emit(true);
+    this.onSubmit.emit(this.firstname+" "+this.lastname);
 
   }
 }

@@ -9,19 +9,25 @@
 </head>
 
 <body>
-  <new-page></new-page>
-  <custom-button label="TEST elements"></custom-button>
     <button id = "setJson">setJSON</button>
+  <new-page></new-page>
+  
   <script>
-    const button = document.querySelector('custom-button');
+    // const button = document.querySelector('custom-button');
    
-    button.json={ "firstname":"FIRST","lastname":"lAST", "age":50, "city":"New York"};
-    button.addEventListener("onSubmit", function(e) { console.log("event captured" +e.detail) });
+    // button.json={ "firstname":"FIRST","lastname":"lAST", "age":50, "city":"New York"};
+    // button.addEventListener("onSubmit", function(e) { console.log("event captured" +e.detail) });
+
 
     
+
+    const otp = document.querySelector('new-page');
+    otp.addEventListener("onSubmit", function(e) { console.log("event captured" +e.detail) });
+
+
     const setJsonButton = document.querySelector('#setJson');
     setJsonButton.addEventListener("click", function(e){
-      button.json={ "firstname":"Tom","lastname":"Jerry", "age":30, "city":"New York"};
+      otp.json={ "firstname":"Tom","lastname":"Jerry", "age":30, "city":"New York"};
     });
 
   </script>

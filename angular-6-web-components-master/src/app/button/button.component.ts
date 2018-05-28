@@ -3,9 +3,10 @@ import {
   Component,
 
   EventEmitter,
-  Output
+  Output,
+  OnInit
 } from '@angular/core';
-
+import {DataServiceService} from '../data-service.service'; 
 @Component({
   selector: 'custom-button',
   template: `
@@ -38,25 +39,18 @@ Last name: <input type="text" name="LastName" value={{lastname}}><br>
   ],
 
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnInit{
   @Input() label = 'default label';
-
-  @Input()
-  set json(json: any) {
-   // this.obj = JSON.parse(json);
-    this.firstname = json.firstname;
-    this.lastname = json.lastname;
-
-  }
 
   @Output() action = new EventEmitter<number>();
 
   @Output() onSubmit = new EventEmitter<string>();
 
   private clicksCt = 0;
-  private obj;
   public firstname ='Mickey';
   public lastname = 'Mouse';
+
+  constructor(private dataService:DataServiceService) { }
 
   handleClick() {
     window.alert("hi!");
@@ -67,5 +61,11 @@ export class ButtonComponent {
     console.log("submit clicked");
     this.onSubmit.emit(this.firstname+" "+this.lastname);
 
+  }
+
+  ngOnInit(){
+    console.log("service:  "+this.dataService.firstname+" "+this.dataService.lastname);
+    this.firstname = this.dataService.firstname;
+    this.lastname = this.dataService.lastname;
   }
 }

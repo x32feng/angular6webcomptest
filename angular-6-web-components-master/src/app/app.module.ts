@@ -6,6 +6,7 @@ import { ButtonComponent } from './button/button.component';
 import { NewpageComponent } from './newpage/newpage.component';
 import { HomeComponent } from './home/home.component';
 import {APP_BASE_HREF} from '@angular/common';
+import { Button } from 'protractor';
 @NgModule({
   declarations: [ButtonComponent,NewpageComponent, HomeComponent],
   imports: [BrowserModule,
@@ -13,7 +14,9 @@ import {APP_BASE_HREF} from '@angular/common';
       {path: 'newpage',
       component: NewpageComponent},
       {path:'home',
-      component:HomeComponent}
+      component:HomeComponent},
+      {path:'button',
+      component:ButtonComponent}
   ])],
   entryComponents: [ButtonComponent,NewpageComponent],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }]
